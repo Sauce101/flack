@@ -1,0 +1,50 @@
+/* Messages view */
+.wrapper {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+/* Room p selectors */
+.select_room {
+	color: #5bc0de;
+	text-decoration: underline;
+}
+
+.select_room:hover {
+	color: white;
+	background-color: #5bc0de;
+  	/*background-color: #A41034;*/
+}
+
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* Username and Channel */
+#uu, #rr {
+	/*color: dodgerblue;*/
+	font-weight: bold;
+}
+
+#send_to_username {
+	width: 200px;
+}
+
+#div_toggle {
+	color: white;
+	background-color: #9a23a1;
+}
+
+body {
+	color: white;
+	background-color: #000000;
+}
+
+hr {
+	background-color: #f7f7f7;
+}
+
+strong, small {
+	color: dodgerblue;
+}

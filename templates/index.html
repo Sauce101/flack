@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Flack</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/styles/style.css"/>
+
+</head>
+
+<body>
+  <div id="try">
+    <nav id="sidebar" class="p-2">
+
+      <!-- Private alert toggle -->
+      <button type="button" id="div_toggle" class="btn ml-2" data-toggle="collapse" data-target="#private_div">Send Private Alert</button>
+      <div id="private_div" class="form-group ml-3 row collapse mt-4">
+        <label for="send_to_username" class="mt-2 mr-2"> To: </label>
+        <select class="form-control" id="send_to_username">
+          {% for user in users %}
+            <option> {{ user }} </option>
+          {% endfor %}
+        </select>
+        <input type="text" id="private_message"placeholder="Private message...">
+        <button id="send_private_message">Send</button>
+      </div>
+
+      <!-- Channel selection -->
+      <div id="pp" class="row ml-2 mr-2 mt-2 flex-container">
+        <h5>Select a Channel:</h5>
+        {% for x in channels %}
+          <p class="select_room ml-2"> {{ x }} </p>
+        {% endfor %}
+      </div>
+
+    </nav>
+
+    <div id="app_chat" class="ml-3">
+      <!-- Channel creation -->
+      <div>
+        <form id="cc">
+          <input type="text" id="user_room" placeholder=" Channel Creation..." autocomplete="off">
+          <button type="button" id="make_room" class="btn btn-info btn-sm">Create *</button>
+        </form>
+        <p class="mt-2"><strong>Your Username: </strong><span id="uu"></span> | <strong>Channel: </strong><span id="rr"></span></p>
+      </div>
+
+      <!-- Input messages -->
+      <div id="input_area" class="mt-2">
+        <form>
+          <div>
+          <input type="text" id="user_message" class="mb-2" placeholder=" Type messages here..." autocomplete="off">
+          <button type="button" id="send_message" class="btn btn-success btn-sm">Send -></button>
+          </div>
+        </form>
+      </div>
+      
+      <hr>
+      
+      <!-- Messages display area -->
+      <div id = "chat">
+        <div id="messages-view" class="wrapper ml-3 w-75">
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Start here by entering a username -->
+    <div class="ml-3">
+      <form id="user_form">
+        <h3 class="mt-3">Flack</h3>
+        <p>Enter the name you would like to use:</p>
+        <div class="form-group">
+          <input type="text" name="name" id="name" required placeholder="Display name" class="form-control w-25" autocomplete=“off”>
+        </div>
+        <button type="submit" id="start_button" class="btn btn-danger">Submit</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- jQuery and Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <!-- SocketIO JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=" crossorigin="anonymous"></script>
+
+  <!-- CustomSocketIO JS -->
+  <script src="{{ url_for('static', filename='scripts/socketio.js') }}"></script>
+
+  <!-- Custom chat JS -->
+  <script src="{{ url_for('static', filename='scripts/chat_page.js') }}"></script>
+
+</body>
+</html>
